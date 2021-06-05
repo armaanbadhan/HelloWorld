@@ -1,0 +1,96 @@
+# points
+point_p1 = 0
+point_p2 = 0
+
+# player 1 board
+player1 = turtle.Turtle()
+player1.hideturtle()
+player1.speed(0)
+player1.color('white')
+player1.shape("square")
+player1.shapesize(4, 1)
+player1.penup()
+player1.setposition(x1, y1)
+player1.showturtle()
+
+# player 2 board
+player2 = turtle.Turtle()
+player2.hideturtle()
+player2.speed(0)
+player2.color('white')
+player2.shape("square")
+player2.shapesize(4, 1)
+player2.penup()
+player2.setposition(-x1, y1)
+player2.showturtle()
+
+# ball
+angles = [random.randrange(-55, 55), random.randrange(125, 225)]
+angle = angles[random.randint(0, 1)]
+
+ball = turtle.Turtle()
+ball.speed(1)
+ball.color('white')
+ball.shape("square")
+ball.penup()
+ball.tiltangle(angle)
+ball.right(angle)
+ball.forward(700)
+
+y_b = ball.ycor()
+x_b = ball.xcor()
+
+
+# functions for moving
+def go_up_1():        # player 1 up
+    y = player1.ycor()
+    if y <= 275:
+        y += 25
+        player1.setposition(x1, y)
+    else:
+        pass
+
+
+def go_dn_1():        # player 1 down
+    y = player1.ycor()
+    if y >= -275:
+        y -= 25
+        player1.setposition(x1, y)
+    else:
+        pass
+
+
+def go_up_2():          # player 2 up
+    y = player2.ycor()
+    if y <= 275:
+        y += 25
+        player2.setposition(-x1, y)
+    else:
+        pass
+
+
+def go_dn_2():          # player 2 down
+    y = player2.ycor()
+    if y >= -275:
+        y -= 25
+        player2.setposition(-x1, y)
+    else:
+        pass
+
+
+# move boards
+wn.listen()
+wn.onkeypress(go_up_1, "i")
+wn.onkeypress(go_dn_1, "k")
+wn.onkeypress(go_up_2, "w")
+wn.onkeypress(go_dn_2, "s")
+
+if x_b >= 650:
+    point_p2 += 1
+if x_b <= -650:
+    point_p1 += 1
+
+print(point_p2)
+print(point_p1)
+
+turtle.done()

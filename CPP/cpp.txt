@@ -1,0 +1,6 @@
+variable -> container where we store data
+cout -> console out
+endl -> end line
+; -> we're done with a line of code
+float -> floating point number
+double -> can store more decimals than float 
